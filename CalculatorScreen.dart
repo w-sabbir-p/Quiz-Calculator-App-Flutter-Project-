@@ -39,7 +39,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       if (result.isNaN) {
         return 'Error';
       }
-      return result.toStringAsFixed(2); // Format result to two decimal places
+      return result.toStringAsFixed(2); 
     } catch (e) {
       return 'Error';
     }
