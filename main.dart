@@ -88,17 +88,15 @@ class _QuizScreenState extends State<QuizScreen> {
     for (var i = questions.length - 1; i > 0; i--) {
       final j = random.nextInt(i + 1);
 
-      // Swap questions
+      
       final tempQuestion = questions[i];
       questions[i] = questions[j];
       questions[j] = tempQuestion;
 
-      // Swap options
       final tempOptions = options[i];
       options[i] = options[j];
       options[j] = tempOptions;
 
-      // Swap correct answers
       final tempAnswer = correctAnswers[i];
       correctAnswers[i] = correctAnswers[j];
       correctAnswers[j] = tempAnswer;
@@ -139,7 +137,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void checkAnswer(String selectedOption) {
     if (isAnswered) {
-      return; // Prevent multiple answer selections
+      return; 
     }
 
     String correctAnswer = correctAnswers[questionIndex];
@@ -160,11 +158,11 @@ class _QuizScreenState extends State<QuizScreen> {
         if (questionIndex < questions.length - 1) {
           questionIndex++;
           isAnswered = false;
-          timeRemaining = quizTimeInSeconds; // Reset timer for the next question
+          timeRemaining = quizTimeInSeconds; 
         } else {
-          // Quiz completed, perform any desired actions
-          timeRemaining = quizTimeInSeconds; // Reset timer for the next quiz
-          shuffleQuestionsAndOptions(); // Shuffle questions and options for the next quiz
+         
+          timeRemaining = quizTimeInSeconds; 
+          shuffleQuestionsAndOptions(); 
         }
       });
     });
@@ -175,13 +173,12 @@ class _QuizScreenState extends State<QuizScreen> {
       setState(() {
         if (timeRemaining > 0) {
           timeRemaining--;
-          startQuizTimer(); // Recursively call to update the timer
+          startQuizTimer(); 
         } else {
-          // Time's up, perform any desired actions here
-          timeRemaining = quizTimeInSeconds; // Reset the timer for the next quiz
-          shuffleQuestionsAndOptions(); // Shuffle questions and options for the next quiz
-          // You can add actions to proceed to the next question or end the quiz
-          // based on your requirements when the time is up.
+          
+          timeRemaining = quizTimeInSeconds; 
+          shuffleQuestionsAndOptions(); 
+        
         }
       });
     });
@@ -200,8 +197,8 @@ class _QuizScreenState extends State<QuizScreen> {
       quizNumber++;
       score = 0;
       isAnswered = false;
-      timeRemaining = quizTimeInSeconds; // Reset timer for the next quiz
-      shuffleQuestionsAndOptions(); // Shuffle questions and options for the next quiz
+      timeRemaining = quizTimeInSeconds;
+      shuffleQuestionsAndOptions();
     });
   }
 
@@ -236,12 +233,12 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal, // Change the app bar color to black
+        backgroundColor: Colors.teal,
         title: Text('Quiz App'),
       ),
 
       body: Container(
-        color: Colors.black, // Change the background color to black
+        color: Colors.black, 
         child: Column(
           children: [
             SizedBox(height: 30),
@@ -300,7 +297,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
-                                color: Colors.white60// Increase the font size
+                                color: Colors.white60
                             ),
                           ),
                           SizedBox(width: 10),
@@ -310,7 +307,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               color: isSelected || showCorrectAnswer
                                   ? Colors.white
                                   : Colors.white60,
-                              fontSize: 20, // Increase the font size
+                              fontSize: 20, 
                             ),
                           ),
                         ],
@@ -360,7 +357,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
               ),
             ),
-            // Display result and color signal
+            
             Text(
               'Result: $result',
               style: TextStyle(
